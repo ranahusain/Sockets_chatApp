@@ -11,6 +11,8 @@
 
     <input type="text" id="message" placeholder="Enter Message" />
     <button id="sendBtn">Send</button>
+    <button id="offchat">turnoff chat</button>
+    <button id="onchat">turnon chat</button>
 
     <div id="messages"></div>
 
@@ -21,6 +23,19 @@
       const sendBtn = document.getElementById("sendBtn");
       const messageInput = document.getElementById("message");
       const allMessages = document.getElementById("messages");
+
+      const offchat = document.getElementById("offchat");
+      const onchat = document.getElementById("onchat");
+
+      offchat.addEventListener("click", (e) => {
+        socket.disconnect();
+        console.log("chat turned off");
+      });
+
+      onchat.addEventListener("click", (e) => {
+        socket.connect();
+        console.log("chat turned off");
+      });
 
       //get the messages
       socket.on("message", (message) => {
